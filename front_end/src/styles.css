@@ -1,0 +1,123 @@
+:root {
+  --white: #ffffff;
+  --main-green: #00EE7E;
+  --dark-grey: #001F3F;
+
+  --light-green: color-mix(in srgb, var(--main-green) 75%, transparent);
+  --bright-green: color-mix(in srgb, var(--main-green) 5%, transparent);
+  --light-grey: color-mix(in srgb, var(--dark-grey) 90%, var(--white));
+  --bright-grey: color-mix(in srgb, var(--white) 75%, transparent);
+  --alert-error: color-mix(in srgb, #FF2400 45%, transparent);
+
+  --smooth-shadow: 0.025rem 0.025rem 0.75rem color-mix(in srgb, #FFFFFF 25%, transparent);
+  --humble-shadow: 0.075rem 0.075rem 0.25rem color-mix(in srgb, #FFFFFF 25%, transparent);
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.025rem;
+  color: var(--bright-grey)
+}
+
+body {
+  background-color: var(--dark-grey)
+}
+
+.input {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--bright-grey);
+  width: 100%;
+  outline: none;
+  border-radius: 0.75rem;
+  border: 0.025rem solid var(--bright-grey);
+  padding: 0.75rem;
+  transition: border 0.2s;
+}
+
+.input:focus {
+  border: 0.075rem solid var(--light-green);
+
+}
+
+.input.invalid {
+  border: 0.075rem solid var(--alert-error);
+}
+
+.input-alert {
+  font-size: 0.75rem;
+  color: var(--alert-error);
+  letter-spacing: -0.975;
+}
+
+.button {
+  border: 0.075rem solid var(--light-green);
+  background: var(--light-green);
+  cursor: pointer;
+  color: var(--white);
+  font-weight: bolder;
+  border-radius: 0.75rem;
+  padding-inline: 1.25rem;
+  padding-block: 0.65rem;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  border-color: var(--main-green);
+  background: var(--main-green);
+}
+
+.button.disable {
+  background: var(--bright-green);
+  border-color: var(--bright-green);
+  color: var(--main-green);
+  cursor: default;
+}
+
+.button.outline {
+  border: 0.075rem solid var(--main-green);
+  background: transparent;
+  color: var(--main-green)
+}
+
+.button.outline:hover {
+  background: var(--bright-green);
+}
+
+select[multiple] {
+    overflow: hidden;
+}
+
+option {
+  background-color: var(--dark-grey);
+}
+
+.chip {
+  padding-inline: 0.5rem;
+  padding-block: 0.175rem;
+  color: var(--white);
+  font-size: 0.75rem;
+  border-radius: 15rem;
+  font-weight: bold;
+}
+
+.chip-category {
+  background:  #4B0082;
+}
+
+.chip-platform {
+  background: #FFA500;
+}
+
+.profile-photo {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 15rem;
+  border: 0.075rem solid var(--bright-grey);
+  cursor: pointer;
+  overflow: hidden;
+}

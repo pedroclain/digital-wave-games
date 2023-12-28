@@ -1,0 +1,40 @@
+@if (game) {
+<img class="banner" [src]="game.imgUrl" />
+<h1 class="title">{{ game.name }}</h1>
+<div class="icon-container">
+  <p class="address">{{ game.description }}</p>
+</div>
+<div class="icon-container">
+  <img src="assets/icons/dollar.svg" />
+  <p class="price">{{ game.price }}</p>
+</div>
+<div class="chips-container">
+  <div class="chip-line">
+    @for (category of game.categories; track $index) {
+    <span class="chip chip-category">{{ category.name }}</span>
+    }
+  </div>
+  <div class="chip-line platform">
+    @for (platform of game.platforms; track $index) {
+    <span class="chip chip-platform">{{ platform.name }}</span>
+    }
+  </div>
+</div>
+
+<section class="rating-section">
+  <h2>Rating</h2>
+  <div class="cards">
+    @for (comment of game.comments; track $index) {
+    <div class="rating-card">
+      <div class="profile">
+        <img [src]="comment.user.imgUrl" class="profile-photo" />
+        <div class="card-name">{{ comment.user.username }}</div>
+      </div>
+      <div class="content">
+        {{ comment.content }}
+      </div>
+    </div>
+    }
+  </div>
+</section>
+}

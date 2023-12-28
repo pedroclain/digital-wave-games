@@ -1,0 +1,64 @@
+<div class="content">
+  <div class="filter-button-container">
+    <div class="filter-button" (click)="switchProfileMenu()">
+      <img src="assets/icons/filter.svg" />
+    </div>
+  </div>
+
+  <div class="filter-menu" [ngClass]="filterMenuStatus">
+    <form [formGroup]="filterForm">
+      <div class="filter-input-container">
+        <p>Order by</p>
+        <select class="input" formControlName="orderBy">
+          <option value="price">Price</option>
+          <option value="name">Name</option>
+          <option value="releaseYear">Release Year</option>
+        </select>
+      </div>
+      <div class="filter-input-container">
+        <p>Price</p>
+        <div class="inputs-price-container">
+          <input type="number" class="input" placeholder="From..." />
+          <input type="number" class="input" placeholder="To..." />
+        </div>
+      </div>
+      <div class="checkbox-inputs">
+        <div
+          class="filter-input-container"
+        >
+          <p>Category</p>
+          <select class="input" multiple formControlName="categories" [size]="categories.length">
+            @for (category of categories; track $index) {
+            <option [value]="category.name">{{category.name}}</option>
+            }
+          </select>
+        </div>
+        <div class="filter-input-container">
+          <p>Platform</p>
+          <select class="input" multiple formControlName="platforms" [size]="platforms.length">
+            @for (platform of platforms; track $index) {
+            <option [value]="platform.name">{{platform.name}}</option>
+            }
+          </select>
+        </div>
+      </div>
+    </form>
+    <button class="button" (click)="applyFilters()">Apply</button>
+  </div>
+
+  <div class="search-container">
+    <input
+      [(ngModel)]="search"
+      type="text"
+      class="input input-search"
+      placeholder="Find your favorite title..."
+    />
+    <button type="text" class="button search-button">Search</button>
+  </div>
+
+  <section>
+    @for (game of games; track $index) {
+    <app-game-card [game]="game" />
+    }
+  </section>
+</div>

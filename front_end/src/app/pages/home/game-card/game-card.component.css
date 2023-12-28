@@ -1,0 +1,93 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 0.075rem solid var(--light-grey);
+  border-radius: 1.75rem;
+  overflow: hidden;
+  color: var(--bright-grey);
+}
+
+.card-banner {
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+}
+
+.card-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-inline: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 1.75rem;
+  background: var(--light-grey)
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--main-purple);
+  margin-bottom: 0.75rem;
+}
+
+.chips-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem
+}
+
+.chip-line {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.chip {
+  padding-inline: 0.5rem;
+  padding-block: 0.175rem;
+  color: var(--white);
+  font-size: 0.75rem;
+  border-radius: 15rem;
+  font-weight: bold;
+}
+
+.chip-category {
+  background:  #4B0082;
+}
+
+.chip-platform {
+  background: #FFA500;
+}
+
+.price-container {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-price {
+  font-weight: bold;
+  color: var(--main-purple);
+  font-size: 0.85rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.learn-more {
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 0.75rem;
+  transition: .3s;
+  color: var(--main-green)
+}
+
+.learn-more:hover {
+  transform: translateX(0.75rem);
+}
+
+.learn-more a {
+  text-decoration: none;
+  color: var(--main-purple);
+}
+

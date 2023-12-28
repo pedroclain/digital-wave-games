@@ -1,0 +1,145 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1.25rem;
+  padding-block: 0.75rem;
+  box-shadow: var(--smooth-shadow);
+}
+
+.burger {
+  border-radius: 0.75rem;
+  border: 0.125rem solid var(--main-green);
+  width: 3.25rem;
+  height: 3.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.line-burger {
+  border-radius: 0.75rem;
+  height: 0.125rem;
+  width: 75%;
+  background-color: var(--main-green);
+}
+
+.logo-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--main-green);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-button {
+  padding-block: 1.025rem;
+}
+
+.profile {
+  position: relative;
+}
+
+
+.profile-menu {
+  z-index: 9999;
+  position: absolute;
+  padding-inline: 1.75rem;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--dark-grey);
+}
+
+.profile-menu h3 {
+  text-align: center;
+  color: var(--main-green)
+}
+
+.profile-menu.open {
+  animation: openMenu .3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.profile-menu.close {
+  animation: closeMenu .3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+main {
+  padding-inline: 1.25rem;
+  padding-block: 2.75rem;
+}
+
+.loading-container {
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  left: 0;
+  top: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.loading-bar {
+  position: relative;
+  height: 7.5rem;
+  width: 7.5rem;
+  border-radius: 1.75rem;
+  border: 0.75rem solid var(--main-green);
+  animation: rotate 1.5s infinite ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  50% {
+    transform: rotate(180deg);
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}
+
+@keyframes openMenu {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 80%;
+  }
+}
+
+@keyframes closeMenu {
+  from {
+    height: 80%;
+  }
+
+  to {
+    height: 0;
+    display: none;
+  }
+}

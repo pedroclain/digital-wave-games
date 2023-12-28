@@ -1,0 +1,12 @@
+form {
+  margin: auto;
+  max-width: 25rem;
+}
+
+input {
+  margin-bottom: 1.25rem;
+}
+
+button {
+  width: 100%;
+}

@@ -1,0 +1,83 @@
+{
+  "platforms": ["PLAYSTATION 4", "PLAYSTATION 5", "NINTENDO SWITCH", "PC", "XBOX ONE", "XBOX SERIES X"],
+  "categories": ["RPG", "ADVENTURE", "SANDBOX", "SPORTS", "SHOOTER"],
+  "user": {
+    "id": 1,
+    "username": "Satoru Gojo",
+    "email": "satoru.gojo@email.com",
+    "imgUrl": "https://dimensaosete.com.br/static/7fc311549694666167a49cdb0fb1293c/2493a/gojo.webp",
+    "password": "$2b$10$NeFucjBJqlqTAY.jaqxMuu3x9S0ExIEypAKkAhqlwuzRnaSmsWcgi"
+  },
+  "games": [
+    {
+      "id": 1,
+      "name": "The Witcher 3: Wild Hunt",
+      "description": "An action role-playing game",
+      "imgUrl": "https://sm.ign.com/t/ign_br/news/t/this-is-ho/this-is-how-big-the-script-was-for-the-witcher-3-w_r7tv.1280.jpg",
+      "price": 159.99,
+      "releaseYear": 2015,
+      "platforms": ["PC", "PLAYSTATION 5", "XBOX ONE"],
+      "categories": ["RPG", "ADVENTURE"]
+    },    
+    {
+      "id": 2,
+      "name": "FIFA 22",
+      "description": "A football simulation game",
+      "imgUrl": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000038676/02b078ec6e65f597dc655c1b958bf2dd07961ea45db4d59688ca8746bf28ae6d",
+      "price": 149.99,
+      "releaseYear": 2021,
+      "platforms": ["PLAYSTATION 4", "XBOX SERIES X", "PC"],
+      "categories": ["SPORTS"]
+    },
+    {
+      "id": 3,
+      "name": "Cyberpunk 2077",
+      "description": "An open-world action-adventure game",
+      "imgUrl": "https://www.cyberpunk.net/build/images/social-thumbnail-en-ddcf4d23.jpg",
+      "price": 149.99,
+      "releaseYear": 2020,
+      "platforms": ["PC", "PLAYSTATION 4", "XBOX ONE"],
+      "categories": ["SANDBOX", "ADVENTURE"]
+    },
+    {
+      "id": 4,
+      "name": "Assassin's Creed Valhalla",
+      "description": "An action role-playing game set in the Viking Age",
+      "imgUrl": "https://sm.ign.com/t/ign_br/screenshot/default/ac-valhalla-review-ign_4wjh.1200.jpg",
+      "price": 159.99,
+      "releaseYear": 2020,
+      "platforms": ["PC", "PLAYSTATION 5", "XBOX ONE"],
+      "categories": ["RPG"]
+    },
+    {
+      "id": 5,
+      "name": "Minecraft",
+      "description": "A sandbox game that allows players to build and explore",
+      "imgUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000964/811461b8d1cacf1f2da791b478dccfe2a55457780364c3d5a95fbfcdd4c3086f",
+      "price": 129.99,
+      "releaseYear": 2011,
+      "platforms": ["PC", "PLAYSTATION 4", "XBOX ONE", "NINTENDO SWITCH"],
+      "categories": ["SANDBOX", "ADVENTURE"]
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "content": "This game has an amazing storyline!",
+      "gameId": 1,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "content": "Graphics are stunning, especially on PC!",
+      "gameId": 2,
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "content": "I love the open-world exploration in this game.",
+      "gameId": 2,
+      "userId": 1
+    }
+  ]
+}

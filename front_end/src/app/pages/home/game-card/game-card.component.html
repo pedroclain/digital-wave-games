@@ -1,0 +1,29 @@
+<div class="card">
+  <img class="card-banner" [src]="game?.imgUrl" />
+  <div class="card-info-container">
+    <h3 class="card-title">{{ game?.name }}</h3>
+    <div class="chips-container">
+      <div class="chip-line">
+        @for (category of game?.categories; track $index) {
+        <span class="chip chip-category">{{ category.name }}</span>
+        }
+      </div>
+      <div class="chip-line platform">
+        @for (platform of game?.platforms; track $index) {
+        <span class="chip chip-platform">{{ platform.name }}</span>
+        }
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="price-container">
+        <img class="price-icon" src="assets/icons/dollar.svg" />
+        <span>
+          {{ game?.price }}
+        </span>
+      </div>
+      <p class="learn-more">
+        <a [routerLink]="['/details/', game?.id]"> Learn more > </a>
+      </p>
+    </div>
+  </div>
+</div>
