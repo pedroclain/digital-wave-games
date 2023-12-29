@@ -71,10 +71,10 @@ body {
   background: var(--main-green);
 }
 
-.button.disable {
+.button:disabled {
   background: var(--bright-green);
   border-color: var(--bright-green);
-  color: var(--main-green);
+  color: var(--light-green);
   cursor: default;
 }
 

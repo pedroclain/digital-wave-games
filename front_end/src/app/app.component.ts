@@ -4,6 +4,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoadingService } from './services/loading.service';
 import { AuthService } from './services/auth.service';
+import { AlertService } from './services/alert.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
   router = inject(Router);
   authService = inject(AuthService);
   loadingService = inject(LoadingService);
+  alertService = inject(AlertService)
 
   profileMenuOpen: null | string = null;
 

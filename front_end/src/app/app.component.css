@@ -1,3 +1,28 @@
+.alert {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  top: -100%;
+  width: 340px;
+  left: calc(50% - 170px);
+  padding: 1.75rem;
+  font-weight: bold;
+  color: var(--white);
+}
+
+.alert.success {
+  background-color: var(--main-green);
+}
+
+.alert.open {
+  animation: openAlert .3s ease-in-out forwards;
+}
+
+.alert.close {
+  animation: closeAlert .3s ease-in-out;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -141,5 +166,25 @@ main {
   to {
     height: 0;
     display: none;
+  }
+}
+
+@keyframes openAlert {
+  from {
+    top: -100%;
+  }
+
+  to {
+    top: 10px;
+  }
+}
+
+@keyframes closeAlert {
+  from {
+    top: 10px;
+  }
+
+  to {
+    top: -100%;
   }
 }

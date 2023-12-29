@@ -1,3 +1,8 @@
+<div class="alert" [ngClass]="[alertService.type, alertService.status]">
+  <span>{{ alertService.content }}</span>
+  <span (click)="alertService.closeAlert()">X</span>
+</div>
+
 <nav>
 
   <a class="logo-link" routerLink="/">
