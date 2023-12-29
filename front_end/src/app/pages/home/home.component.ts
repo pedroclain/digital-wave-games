@@ -12,6 +12,7 @@ import { Game } from '../../models/game.model';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../models/category';
 import { Platform } from '../../models/platform.model';
+import { CustomValidators } from '../../validators/custom.validator';
 
 @Component({
   selector: 'app-home',
@@ -30,8 +31,8 @@ export class HomeComponent implements OnInit {
     orderBy: ['', Validators.required],
     priceFrom: [null, Validators.required],
     priceTo: [null, Validators.required],
-    categories: [[], this.validateArrayLength(1)],
-    platforms: [[], this.validateArrayLength(1)],
+    categories: [[], CustomValidators.arrayMinLength(1)],
+    platforms: [[], CustomValidators.arrayMinLength(1)],
   });
 
   constructor(
@@ -81,12 +82,5 @@ export class HomeComponent implements OnInit {
     this.filterMenuStatus === 'open'
       ? (this.filterMenuStatus = 'close')
       : (this.filterMenuStatus = 'open');
-  }
-
-  validateArrayLength(minLength: number) {
-    return (control: AbstractControl) => {
-      const array = control.value as string[];
-      return array.length >= minLength ? null : { minLengthViolation: true };
-    };
   }
 }
