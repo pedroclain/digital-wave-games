@@ -1,22 +1,20 @@
 @if (game) {
 <img class="banner" [src]="game.imgUrl" />
 <h1 class="title">{{ game.name }}</h1>
-<div class="icon-container">
-  <p class="address">{{ game.description }}</p>
-</div>
-<div class="icon-container">
+<p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit voluptate laboriosam facilis fuga quia. Et placeat, nostrum sunt nisi perspiciatis quaerat alias laudantium modi quasi, quibusdam mollitia ipsum! Nisi, exercitationem.</p>
+<div class="price-container">
   <img src="assets/icons/dollar.svg" />
-  <p class="price">{{ game.price }}</p>
+  <p class="price-txt">{{ game.price }}</p>
 </div>
-<div class="chips-container">
+<div class="chip-container">
   <div class="chip-line">
     @for (category of game.categories; track $index) {
-    <span class="chip chip-category">{{ category.name }}</span>
+    <span class="chip category">{{ category.name }}</span>
     }
   </div>
-  <div class="chip-line platform">
+  <div class="chip-line">
     @for (platform of game.platforms; track $index) {
-    <span class="chip chip-platform">{{ platform.name }}</span>
+    <span class="chip platform">{{ platform.name }}</span>
     }
   </div>
 </div>

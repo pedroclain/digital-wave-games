@@ -105,11 +105,11 @@ option {
   font-weight: bold;
 }
 
-.chip-category {
+.chip.category {
   background:  #4B0082;
 }
 
-.chip-platform {
+.chip.platform {
   background: #FFA500;
 }
 

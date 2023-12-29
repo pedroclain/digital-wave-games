@@ -11,19 +11,14 @@
   letter-spacing: -0.1375rem;
 }
 
-.icon-container p {
-  color: var(--secondary-grey);
-  font-weight: bold;
-}
-
-.icon-container {
+.price-container {
   display: flex;
   gap: 0.375rem;
   align-items: center;
-  margin-bottom: 0.775rem;
+  margin-block: 0.775rem;
 }
 
-.chips-container {
+.chip-container {
   display: flex;
   flex-direction: column;
   gap: 0.75rem
