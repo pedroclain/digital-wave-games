@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
   filterMenuStatus: null | string = null;
   filterForm = this.formBuilder.group({
     orderBy: ['', Validators.required],
+    priceFrom: [null, Validators.required],
+    priceTo: [null, Validators.required],
     categories: [[], this.validateArrayLength(1)],
     platforms: [[], this.validateArrayLength(1)],
   });
@@ -58,10 +60,14 @@ export class HomeComponent implements OnInit {
       page: 0,
       size: 10,
       filter: {
-        categories: this.filterForm.controls.categories.valid ? this.filterForm.value.categories : undefined,
-        platforms: this.filterForm.controls.platforms.valid ? this.filterForm.value.platforms : undefined,
+        categories: this.filterForm.controls.categories.valid ? this.filterForm.value.categories! : undefined,
+        platforms: this.filterForm.controls.platforms.valid ? this.filterForm.value.platforms! : undefined,
+        price: {
+          from: this.filterForm.controls.priceFrom.valid ? this.filterForm.value.priceFrom! : undefined,
+          to: this.filterForm.controls.priceTo.valid ? this.filterForm.value.priceTo! : undefined,
+        }
       },
-      orderBy: this.filterForm.controls.orderBy.valid ? this.filterForm.value.orderBy : undefined
+      orderBy: this.filterForm.controls.orderBy.valid ? this.filterForm.value.orderBy! : undefined
     };
 
     this.gameService

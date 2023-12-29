@@ -30,9 +30,13 @@ export class GameService {
 export type PaginateType = {
   page: number;
   size: number;
-  orderBy?: string | null,
+  orderBy?: string,
   filter?: {
-    categories?: string[] | null;
-    platforms?: string[] | null;
+    categories?: string[];
+    platforms?: string[];
+    price?: {
+      from?: number;
+      to?: number
+    }
   };
 };

@@ -39,7 +39,7 @@ export class GameRepository {
         },
         price: filter.price && {
           gt: filter.price.from && filter.price.from,
-          lt: filter.price.from && filter.price.to
+          lt: filter.price.to && filter.price.to
         }
       },
       include: {
