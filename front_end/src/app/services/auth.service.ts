@@ -27,7 +27,7 @@ export class AuthService {
     return this.cookieService.get("accessToken");
   }
 
-  isLoggedId() {
+  isLoggedIn() {
     return this.cookieService.check("accessToken");
   }
 

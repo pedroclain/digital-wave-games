@@ -5,7 +5,7 @@
     <span>DWG</span>
   </a>
 
-  @if (authService.isLoggedId()) {
+  @if (authService.isLoggedIn()) {
       <div class="profile-photo" (click)="switchProfileMenu()">
         <img [src]="authService.getPayload()?.imgUrl" />
       </div>
