@@ -1,24 +1,54 @@
 @if (game) {
-<img class="banner" [src]="game.imgUrl" />
-<h1 class="title">{{ game.name }}</h1>
-<p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit voluptate laboriosam facilis fuga quia. Et placeat, nostrum sunt nisi perspiciatis quaerat alias laudantium modi quasi, quibusdam mollitia ipsum! Nisi, exercitationem.</p>
-<div class="price-container">
-  <img src="assets/icons/dollar.svg" />
-  <p class="price-txt">{{ game.price }}</p>
-</div>
-<div class="chip-container">
-  <div class="chip-line">
-    @for (category of game.categories; track $index) {
-    <span class="chip category">{{ category.name }}</span>
-    }
+<div class="game-container">
+  <img class="banner" [src]="game.imgUrl" />
+  <h1 class="title">{{ game.name }}</h1>
+  <p class="description">
+    {{ game.description }}
+  </p>
+  <div class="price-container">
+    <img src="assets/icons/dollar.svg" />
+    <p class="price-txt">{{ game.price }}</p>
   </div>
-  <div class="chip-line">
-    @for (platform of game.platforms; track $index) {
-    <span class="chip platform">{{ platform.name }}</span>
-    }
+  <div class="chip-container">
+    <div class="chip-line">
+      @for (category of game.categories; track $index) {
+      <span class="chip category">{{ category.name }}</span>
+      }
+    </div>
+    <div class="chip-line">
+      @for (platform of game.platforms; track $index) {
+      <span class="chip platform">{{ platform.name }}</span>
+      }
+    </div>
   </div>
 </div>
-
+<form (submit)="submitContactForm()" [formGroup]="purchaseForm">
+  <div class="input-container">
+    <input class="input" formControlName="name" type="text" placeholder="First Name" />
+  </div>
+  <div class="input-container">
+    <input class="input" formControlName="email" type="email" placeholder="Email" />
+  </div>
+  <div class="input-container">
+    <input class="input" formControlName="phone" type="number" placeholder="Phone" />
+  </div>
+  <form [formGroup]="purchaseForm.controls.cardForm" class="subform-container">
+    <div class="input-container">
+      <input class="input" formControlName="number" type="number" placeholder="Card number" />
+    </div>
+    <div class="input-container">
+      <input class="input" formControlName="cvv" type="number" placeholder="CVV" />
+    </div>
+    <div class="input-container">
+      <input class="input" formControlName="validation" type="date" placeholder="Validation" />
+    </div>
+  </form>
+  <div class="submit-container">
+    <button [disabled]="purchaseForm.invalid" class="button" type="submit">
+      Finish
+    </button>
+  </div>
+</form>
 <section class="rating-section">
   <h2>Rating</h2>
   <div class="cards">
