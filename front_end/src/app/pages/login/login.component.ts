@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { AuthService, LoginResponse } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +12,25 @@ import { AuthService, LoginResponse } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+export class LoginComponent implements OnInit {
+  constructor(
+    private authService: AuthService,
+    private alertService: AlertService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   formLogin = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params['expire'])
+        this.alertService.alertError("Session expired, please signin again");
+    });
+  }
 
   login() {
     this.authService
@@ -42,9 +51,9 @@ export class LoginComponent {
 
   loginErrorHandler(err: HttpErrorResponse) {
     if (err.status === HttpStatusCode.Unauthorized) {
-      alert('Invalid email or password. Try again...');
+      this.alertService.alertError("Invalid email or password. Try again...");
     } else {
-      alert('Unespected error');
+      this.alertService.alertError("Unespected error");
     }
   }
 }

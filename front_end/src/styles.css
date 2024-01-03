@@ -7,7 +7,7 @@
   --bright-green: color-mix(in srgb, var(--main-green) 5%, transparent);
   --light-grey: color-mix(in srgb, var(--dark-grey) 90%, var(--white));
   --bright-grey: color-mix(in srgb, var(--white) 75%, transparent);
-  --alert-error: color-mix(in srgb, #FF2400 45%, transparent);
+  --alert-error: color-mix(in srgb, #FF2400 85%, var(--white));
 
   --smooth-shadow: 0.025rem 0.025rem 0.75rem color-mix(in srgb, #FFFFFF 25%, transparent);
   --humble-shadow: 0.075rem 0.075rem 0.25rem color-mix(in srgb, #FFFFFF 25%, transparent);

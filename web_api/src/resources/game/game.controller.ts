@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body,  Param, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body,  Param, HttpCode, HttpStatus, UseGuards } from '@nestjs/common';
 import { GameService } from './game.service';
 import { GamePaginationDto } from './dto/game-pagination.dto';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('store')
 export class GameController {
@@ -12,6 +13,7 @@ export class GameController {
   }
 
   @Get('game/:id')
+  @UseGuards(AuthGuard)
   findOne(@Param('id') id: string) {
     return this.gameService.findOne(+id);
   }

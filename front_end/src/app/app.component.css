@@ -15,6 +15,10 @@
   background-color: var(--main-green);
 }
 
+.alert.error {
+  background-color: var(--alert-error);
+}
+
 .alert.open {
   animation: openAlert .3s ease-in-out forwards;
 }

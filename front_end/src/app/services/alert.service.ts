@@ -10,6 +10,14 @@ export class AlertService {
 
   constructor() {}
 
+  alertError(content: string) {
+    this.openAlert({ content, type: 'error'})
+  }
+
+  alertSuccess(content: string) {
+    this.openAlert({ content, type: 'success'})
+  }
+
   openAlert({ content, type }: { content: string; type: AlertType }) {
     this.status = 'open';
     this.type = type;
@@ -21,4 +29,4 @@ export class AlertService {
   }
 }
 
-type AlertType = 'alert' | 'success' | 'error' | '';
+type AlertType = 'success' | 'error' | '';
