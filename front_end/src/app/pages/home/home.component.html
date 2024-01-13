@@ -1,6 +1,6 @@
 <div class="content">
   <div class="filter-button-container">
-    <div class="filter-button" (click)="switchProfileMenu()">
+    <div class="filter-button" (click)="switchFiltersMenu()">
       <img src="assets/icons/filter.svg" />
     </div>
   </div>
@@ -18,26 +18,44 @@
       <div class="filter-input-container">
         <p>Price</p>
         <div class="inputs-price-container">
-          <input formControlName="priceFrom" type="number" class="input" placeholder="From..." />
-          <input formControlName="priceTo" type="number" class="input" placeholder="To..." />
+          <input
+            formControlName="priceFrom"
+            type="number"
+            class="input"
+            placeholder="From..."
+          />
+          <input
+            formControlName="priceTo"
+            type="number"
+            class="input"
+            placeholder="To..."
+          />
         </div>
       </div>
       <div class="checkbox-inputs">
-        <div
-          class="filter-input-container"
-        >
+        <div class="filter-input-container">
           <p>Category</p>
-          <select class="input" multiple formControlName="categories" [size]="categories.length">
+          <select
+            class="input"
+            multiple
+            formControlName="categories"
+            [size]="categories.length"
+          >
             @for (category of categories; track $index) {
-            <option [value]="category.name">{{category.name}}</option>
+            <option [value]="category.name">{{ category.name }}</option>
             }
           </select>
         </div>
         <div class="filter-input-container">
           <p>Platform</p>
-          <select class="input" multiple formControlName="platforms" [size]="platforms.length">
+          <select
+            class="input"
+            multiple
+            formControlName="platforms"
+            [size]="platforms.length"
+          >
             @for (platform of platforms; track $index) {
-            <option [value]="platform.name">{{platform.name}}</option>
+            <option [value]="platform.name">{{ platform.name }}</option>
             }
           </select>
         </div>
@@ -57,8 +75,57 @@
   </div>
 
   <section>
+    @if (games!==null && games.length > 0) {
+    <div class="pagination-button-container">
+      <span
+        class="page-button"
+        [class.disabled]="!canPrev()"
+        (click)="prevPage()"
+        >prev</span
+      >
+      @for (page of pageButtons; track $index) {
+      <span
+        class="page-button"
+        [class.active]="page === currentPage"
+        (click)="updateCurrentPage(page)"
+        >{{ page + 1 }}</span
+      >
+      }
+
+      <span
+        class="page-button"
+        [class.disabled]="!canNext()"
+        (click)="nextPage()"
+        >next</span
+      >
+    </div>
     @for (game of games; track $index) {
     <app-game-card [game]="game" />
     }
+
+    <div class="pagination-button-container">
+      <span
+        class="page-button"
+        [class.disabled]="!canPrev()"
+        (click)="prevPage()"
+        >prev</span
+      >
+      @for (page of pageButtons; track $index) {
+      <span
+        class="page-button"
+        [class.active]="page === currentPage"
+        (click)="updateCurrentPage(page)"
+        >{{ page + 1 }}</span
+      >
+      }
+
+      <span
+        class="page-button"
+        [class.disabled]="!canNext()"
+        (click)="nextPage()"
+        >next</span
+      >
+    </div>
+    } @else if (games !== null && games.length <= 0) { No games found. }
   </section>
 </div>

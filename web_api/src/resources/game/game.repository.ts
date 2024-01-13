@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/services/prisma.service';
-import { GamePaginationDto } from './dto/game-pagination.dto';
+import { GamePaginationRequestDto } from './dto/game-pagination-request.dto';
 
 @Injectable()
 export class GameRepository {
@@ -16,37 +16,45 @@ export class GameRepository {
 
   async findAllPlatforms() {
     return await this.prisma.platform.findMany();
-
   }
 
-  async findPage({ page, size, orderBy, filter }: GamePaginationDto) {
-    return await this.prisma.game.findMany({
-      skip: page * size,
-      take: size,
-      orderBy: orderBy && {
-        [orderBy]: 'asc',
-      },
-      where: filter && {
-        platforms: filter.platforms && {
-          some: {
-            OR: filter.platforms.map(p => ({ name: p }))
-          },
+  async findPage({ page, size, orderBy, filter }: GamePaginationRequestDto) {
+    const whereQuery = filter && {
+      platforms: filter.platforms && {
+        some: {
+          OR: filter.platforms.map((p) => ({ name: p })),
         },
-        categories: filter.categories && {
-          some: {
-            OR: filter.categories.map(c => ({ name: c }))
-          }
-        },
-        price: filter.price && {
-          gt: filter.price.from && filter.price.from,
-          lt: filter.price.to && filter.price.to
-        }
       },
-      include: {
-        categories: true,
-        platforms: true
-      }
-    });
+      categories: filter.categories && {
+        some: {
+          OR: filter.categories.map((c) => ({ name: c })),
+        },
+      },
+      price: filter.price && {
+        gt: filter.price.from && filter.price.from,
+        lt: filter.price.to && filter.price.to,
+      },
+    }
+
+    const result = await this.prisma.$transaction([
+      this.prisma.game.findMany({
+        skip: page * size,
+        take: size,
+        orderBy: orderBy && {
+          [orderBy]: 'asc',
+        },
+        where: whereQuery,
+        include: {
+          categories: true,
+          platforms: true,
+        },
+      }),
+      this.prisma.game.count({ where: whereQuery }),
+    ]);
+    return {
+      games: result[0],
+      total: result[1]
+    }
   }
 
   async findOne(id: number) {
@@ -61,13 +69,13 @@ export class GameRepository {
               select: {
                 id: true,
                 username: true,
-                imgUrl: true
-              }
-            }
-          }
+                imgUrl: true,
+              },
+            },
+          },
         },
         platforms: true,
-        categories: true
+        categories: true,
       },
     });
   }

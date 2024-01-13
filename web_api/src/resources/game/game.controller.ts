@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body,  Param, HttpCode, HttpStatus, UseGuards } from '@nestjs/common';
 import { GameService } from './game.service';
-import { GamePaginationDto } from './dto/game-pagination.dto';
+import { GamePaginationRequestDto } from './dto/game-pagination-request.dto';
 import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('store')
@@ -30,7 +30,7 @@ export class GameController {
 
   @Post('game/pagination')
   @HttpCode(HttpStatus.OK)
-  findPage(@Body() pagination: GamePaginationDto) {
+  findPage(@Body() pagination: GamePaginationRequestDto) {
     return this.gameService.findPage(pagination);
   }
 }

@@ -1,4 +1,4 @@
-export class GamePaginationDto {
+export class GamePaginationRequestDto {
   page: number;
   size: number;
   orderBy?: string;

@@ -1,6 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { GameRepository } from './game.repository';
-import { GamePaginationDto } from './dto/game-pagination.dto';
+import { GamePaginationRequestDto } from './dto/game-pagination-request.dto';
+import { Game } from '@prisma/client';
+import { GamePaginationResponseDto } from './dto/game-pagination-response.dto';
 
 @Injectable()
 export class GameService {
@@ -26,7 +28,13 @@ export class GameService {
     return await this.gameRepository.findAllPlatforms();
   }
 
-  async findPage(pagination: GamePaginationDto) {
-    return await this.gameRepository.findPage(pagination);
+  async findPage(pagination: GamePaginationRequestDto) {
+    const { games, total } = await this.gameRepository.findPage(pagination);
+    const lastPage = Math.ceil(total / pagination.size) - 1;
+
+    return {
+      lastPage,
+      games
+    } as GamePaginationResponseDto
   }
 }

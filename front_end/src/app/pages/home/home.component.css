@@ -85,6 +85,29 @@ section {
   gap: 1rem;
 }
 
+.pagination-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+  font-weight: bold;
+}
+
+.page-button {
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding-block: 0.5rem;
+  padding-inline: 0.5rem;
+}
+
+.page-button.disabled {
+  color: var(--light-grey)
+}
+
+.page-button.active {
+  color: var(--white);
+  background-color: var(--main-green);
+}
+
 @keyframes openMenu {
   from {
     transform: translateX(-100%);
