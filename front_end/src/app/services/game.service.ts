@@ -36,6 +36,7 @@ export type PaginateType = {
   size: number;
   orderBy?: string,
   filter?: {
+    name?: string;
     categories?: string[];
     platforms?: string[];
     price?: {

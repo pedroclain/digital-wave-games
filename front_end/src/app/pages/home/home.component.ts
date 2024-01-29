@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
 
   filterMenuStatus: null | string = null;
   filterForm = this.formBuilder.group({
+    name: ['', Validators.required],
     orderBy: ['', Validators.required],
     priceFrom: [null, Validators.required],
     priceTo: [null, Validators.required],
@@ -76,11 +77,20 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  filterClickHandler() {
+    this.filterForm.controls.name.patchValue('');
+    this.applyFilters();
+    this.switchFiltersMenu();
+  }
+
+  searchClickHandler() {
+    this.applyFilters();
+  }
+
   applyFilters() {
     this.currentPage = 0;
     this.buildGamesApiFilters();
     this.findPaginate();
-    this.switchFiltersMenu();
   }
 
   switchFiltersMenu() {
@@ -94,6 +104,7 @@ export class HomeComponent implements OnInit {
       page: 0,
       size: 2,
       filter: {
+        name: this.filterForm.controls.name.valid ? this.filterForm.value.name! : undefined,
         categories: this.filterForm.controls.categories.valid
           ? this.filterForm.value.categories!
           : undefined,

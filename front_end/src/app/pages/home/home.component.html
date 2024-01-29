@@ -61,18 +61,21 @@
         </div>
       </div>
     </form>
-    <button class="button" (click)="applyFilters()">Apply</button>
+    <button class="button" (click)="filterClickHandler()">Apply</button>
   </div>
 
-  <div class="search-container">
-    <input
-      [(ngModel)]="search"
-      type="text"
-      class="input input-search"
-      placeholder="Find your favorite title..."
-    />
-    <button type="text" class="button search-button">Search</button>
-  </div>
+    <form class="search-container" [formGroup]="filterForm">
+      <input
+        formControlName="name"
+        [(ngModel)]="search"
+        type="text"
+        class="input input-search"
+        placeholder="Find your favorite title..."
+      />
+      <button type="text" class="button search-button" (click)="searchClickHandler()">
+        Search
+      </button>
+    </form>
 
   <section>
     @if (games!==null && games.length > 0) {

@@ -3,6 +3,7 @@ export class GamePaginationRequestDto {
   size: number;
   orderBy?: string;
   filter?: {
+    name?: string;
     platforms?: string[];
     categories?: string[];
     price?: {
