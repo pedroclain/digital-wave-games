@@ -20,7 +20,9 @@ export class GameRepository {
 
   async findPage({ page, size, orderBy, filter }: GamePaginationRequestDto) {
     const whereQuery = filter && {
-      name: filter.name,
+      name: filter.name && {
+        contains: filter.name
+      },
       platforms: filter.platforms && {
         some: {
           OR: filter.platforms.map((p) => ({ name: p })),
