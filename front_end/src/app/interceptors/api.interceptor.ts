@@ -16,8 +16,9 @@ export const apiInterceptor: HttpInterceptorFn = (req, next) => {
   const loadingService = inject(LoadingService);
 
   const accessToken = authService.getAccessToken();
+  const newUrl = new URL(`${environment.apiUrl}/${req.url}`);
   const newReq = req.clone({
-    url: `${environment.apiUrl}/${req.url}`,
+    url: newUrl.toString(),
     setHeaders: {
       Authorization: `Bearer ${accessToken}`,
     },
