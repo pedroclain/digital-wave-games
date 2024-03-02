@@ -78,6 +78,7 @@
     </form>
 
   <section>
+    <app-loading-bar [open]="games === null"></app-loading-bar>
     @if (games!==null && games.length > 0) {
     <div class="pagination-button-container">
       <span

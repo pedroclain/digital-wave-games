@@ -1,0 +1,33 @@
+.loading-container {
+  width: 100%;
+  margin-block: 8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.loading-bar {
+  height: 7.5rem;
+  width: 7.5rem;
+  border-radius: 1.75rem;
+  border: 0.75rem solid var(--main-green);
+  animation: rotate 1.5s infinite ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  50% {
+    transform: rotate(180deg);
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}

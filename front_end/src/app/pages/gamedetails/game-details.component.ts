@@ -4,15 +4,15 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { LoadingService } from '../../services/loading.service';
 import { Game } from '../../models/game.model';
 import { GameService } from '../../services/game.service';
 import { AlertService } from '../../services/alert.service';
+import { LoadingBarComponent } from '../../components/loading-bar/loading-bar.component';
 
 @Component({
   selector: 'app-game-details',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LoadingBarComponent],
   templateUrl: './game-details.component.html',
   styleUrl: './game-details.component.css',
 })
@@ -32,18 +32,15 @@ export class GameDetails {
 
   constructor(
     private gameService: GameService,
-    private loadingService: LoadingService,
     private alertService: AlertService,
     private formBuilder: FormBuilder
   ) {}
 
   @Input()
   set id(id: number) {
-    this.loadingService.openLoading();
     this.gameService.findById(id).subscribe({
       next: (response) => {
         this.game = response;
-        this.loadingService.closeLoading();
       },
       error: (error) => {
         this.alertService.alertError("Something is wrong")

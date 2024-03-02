@@ -12,7 +12,7 @@ export class GameService {
   constructor(private http: HttpClient) {}
 
   findById(id: number) {
-    return this.http.get<Game>('store/game/'+id);
+    return this.http.get<Game>('store/game/'+id).pipe(delay(1000));
   }
 
   findPaginate(paginate: PaginateType) {

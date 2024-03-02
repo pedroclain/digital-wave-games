@@ -114,44 +114,6 @@ main {
   padding-block: 2.75rem;
 }
 
-.loading-container {
-  position: absolute;
-  width: 100%;
-  z-index: 999;
-  left: 0;
-  top: 40%;
-  display: flex;
-  justify-content: center;
-}
-
-.loading-bar {
-  position: relative;
-  height: 7.5rem;
-  width: 7.5rem;
-  border-radius: 1.75rem;
-  border: 0.75rem solid var(--main-green);
-  animation: rotate 1.5s infinite ease-in-out;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-    width: 5.5rem;
-    height: 5.5rem;
-  }
-  50% {
-    transform: rotate(180deg);
-    width: 7.5rem;
-    height: 7.5rem;
-  }
-
-  100% {
-    transform: rotate(360deg);
-    width: 5.5rem;
-    height: 5.5rem;
-  }
-}
-
 @keyframes openMenu {
   from {
     height: 0;

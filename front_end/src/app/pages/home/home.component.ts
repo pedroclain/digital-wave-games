@@ -12,12 +12,12 @@ import { CommonModule } from '@angular/common';
 import { Category } from '../../models/category';
 import { Platform } from '../../models/platform.model';
 import { CustomValidators } from '../../validators/custom.validator';
-import { LoadingService } from '../../services/loading.service';
+import { LoadingBarComponent } from '../../components/loading-bar/loading-bar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, GameCardComponent, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, GameCardComponent, LoadingBarComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private gameService: GameService,
     private formBuilder: FormBuilder,
-    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +63,6 @@ export class HomeComponent implements OnInit {
   }
 
   findPaginate() {
-    this.loadingService.openLoading();
     this.games = null;
     this.gameService
     .findPaginate(this.filters)
@@ -73,7 +71,6 @@ export class HomeComponent implements OnInit {
       this.lastPage = response.lastPage;
       this.numberOfButtonPages = this.lastPage > 3 ? 3 : this.lastPage + 1
       this.definePageButton();
-      this.loadingService.closeLoading();
       });
   }
 
