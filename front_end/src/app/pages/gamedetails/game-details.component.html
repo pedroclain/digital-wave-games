@@ -25,23 +25,29 @@
 </div>
 <form (submit)="submitContactForm()" [formGroup]="purchaseForm">
   <div class="input-container">
-    <input class="input" formControlName="name" type="text" placeholder="First Name" />
+    <input maxlength="32" class="input" formControlName="name" type="text" placeholder="First Name"
+      [class.invalid]="purchaseForm.controls.name.touched && !purchaseForm.controls.name.valid" />
   </div>
   <div class="input-container">
-    <input class="input" formControlName="email" type="email" placeholder="Email" />
+    <input maxlength="32" class="input" formControlName="email" type="email" placeholder="Email"
+      [class.invalid]="purchaseForm.controls.email.touched && !purchaseForm.controls.email.valid" />
   </div>
   <div class="input-container">
-    <input class="input" formControlName="phone" type="number" placeholder="Phone" />
+    <input class="input" formControlName="phone" type="number" placeholder="Phone"
+      [class.invalid]="purchaseForm.controls.phone.touched && !purchaseForm.controls.phone.valid"/>
   </div>
   <form [formGroup]="purchaseForm.controls.cardForm" class="subform-container">
     <div class="input-container">
-      <input class="input" formControlName="number" type="number" placeholder="Card number" />
+      <input class="input" formControlName="number" type="number" placeholder="Card number"
+        [class.invalid]="purchaseForm.controls.cardForm.controls.number.touched && !purchaseForm.controls.cardForm.controls.number.valid"/>
     </div>
     <div class="input-container">
-      <input class="input" formControlName="cvv" type="number" placeholder="CVV" />
+      <input class="input" formControlName="cvv" type="number" placeholder="CVV"
+        [class.invalid]="purchaseForm.controls.cardForm.controls.cvv.touched && !purchaseForm.controls.cardForm.controls.cvv.valid"/>
     </div>
     <div class="input-container">
-      <input class="input" formControlName="validation" type="date" placeholder="Validation" />
+      <input class="input" formControlName="validation" type="date" placeholder="Validation"
+        [class.invalid]="purchaseForm.controls.cardForm.controls.validation.touched && !purchaseForm.controls.cardForm.controls.validation.valid"/>
     </div>
   </form>
   <div class="submit-container">

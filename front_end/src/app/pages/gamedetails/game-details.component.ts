@@ -8,6 +8,7 @@ import { Game } from '../../models/game.model';
 import { GameService } from '../../services/game.service';
 import { AlertService } from '../../services/alert.service';
 import { LoadingBarComponent } from '../../components/loading-bar/loading-bar.component';
+import { CustomValidators } from '../../validators/custom.validator';
 
 @Component({
   selector: 'app-game-details',
@@ -20,12 +21,12 @@ export class GameDetails {
   game: Game | null = null;
 
   purchaseForm = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
+    name: ['', [Validators.required, Validators.maxLength(32)]],
     email: ['', [Validators.required, Validators.email]],
-    phone: [null, [Validators.min(999999999), Validators.max(99999999999)]],
+    phone: [null, [CustomValidators.numberMinLength(8), CustomValidators.numberMaxLength(12)]],
     cardForm: this.formBuilder.group({
-      number: [null, [Validators.required]],
-      cvv: [null, [Validators.required, Validators.min(1), Validators.max(999)]],
+      number: [null, [Validators.required, CustomValidators.numberMinLength(12), CustomValidators.numberMaxLength(16)]],
+      cvv: [null, [Validators.required, CustomValidators.numberLength(3)]],
       validation: [null, [Validators.required]],
     }),
   });
