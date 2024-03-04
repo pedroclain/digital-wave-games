@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit {
   categories: Category[] = [];
   platforms: Platform[] = [];
 
+  PAGE_SIZE = 6;
+  MAX_BUTTON_PAGES = 3;
+
   search = '';
   currentPage = 0;
   lastPage = 0;
@@ -49,7 +52,7 @@ export class HomeComponent implements OnInit {
   });
   filters: PaginateType = {
     page: this.currentPage,
-    size: 2,
+    size: this.PAGE_SIZE,
   };
 
   constructor(
@@ -73,7 +76,7 @@ export class HomeComponent implements OnInit {
     this.gameService.findPaginate(this.filters).subscribe((response) => {
       this.games = response.games;
       this.lastPage = response.lastPage;
-      this.numberOfButtonPages = this.lastPage > 3 ? 3 : this.lastPage + 1;
+      this.numberOfButtonPages = this.lastPage > this.MAX_BUTTON_PAGES ? this.MAX_BUTTON_PAGES : this.lastPage + 1;
       this.definePageButton();
     });
   }
@@ -116,7 +119,7 @@ export class HomeComponent implements OnInit {
   buildGamesApiFilters() {
     this.filters = {
       page: 0,
-      size: 2,
+      size: this.PAGE_SIZE,
       filter: {
         name: this.filterForm.controls.name.valid
           ? this.filterForm.value.name!
@@ -171,14 +174,13 @@ export class HomeComponent implements OnInit {
   definePageButton() {
     this.pageButtons = [];
     const n = this.currentPage;
-    const k = this.numberOfButtonPages;
     const y = this.lastPage;
-    const s = Math.ceil(k / 2);
+    const s = Math.ceil(this.numberOfButtonPages / 2);
     const h = y - n < s ? s - (y - n) : 0;
 
     for (let i = s + h - 1; i >= 0; i--)
       if (n - i >= 0) this.pageButtons.push(n - i);
-    for (let i = 1; this.pageButtons.length < k; i++)
+    for (let i = 1; this.pageButtons.length < this.numberOfButtonPages; i++)
       this.pageButtons.push(n + i);
   }
 }
