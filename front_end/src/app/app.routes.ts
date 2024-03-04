@@ -8,16 +8,16 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    title: "Login"
+    title: 'Login',
   },
   {
     path: '',
     component: HomeComponent,
-    title: "Homes"
+    title: 'Homes',
   },
   {
     path: 'details/:id',
     component: GameDetails,
-    canActivate: [authGuard]
-  }
+    canActivate: [authGuard],
+  },
 ];

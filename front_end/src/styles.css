@@ -1,18 +1,21 @@
 :root {
   --white: #ffffff;
-  --main-green: #00EE7E;
-  --dark-grey: #001F3F;
+  --main-green: #00ee7e;
+  --dark-grey: #001f3f;
 
   --light-green: color-mix(in srgb, var(--main-green) 75%, transparent);
   --bright-green: color-mix(in srgb, var(--main-green) 5%, transparent);
   --light-grey: color-mix(in srgb, var(--dark-grey) 90%, var(--white));
   --bright-grey: color-mix(in srgb, var(--white) 75%, transparent);
-  --alert-error: color-mix(in srgb, #FF2400 85%, var(--white));
+  --alert-error: color-mix(in srgb, #ff2400 85%, var(--white));
 
-  --smooth-shadow: 0.025rem 0.025rem 0.75rem color-mix(in srgb, #FFFFFF 25%, transparent);
-  --humble-shadow: 0.075rem 0.075rem 0.25rem color-mix(in srgb, #FFFFFF 25%, transparent);
+  --smooth-shadow: 0.025rem 0.025rem 0.75rem
+    color-mix(in srgb, #ffffff 25%, transparent);
+  --humble-shadow: 0.075rem 0.075rem 0.25rem
+    color-mix(in srgb, #ffffff 25%, transparent);
 
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 * {
@@ -20,11 +23,11 @@
   margin: 0;
   padding: 0;
   letter-spacing: -0.025rem;
-  color: var(--bright-grey)
+  color: var(--bright-grey);
 }
 
 body {
-  background-color: var(--dark-grey)
+  background-color: var(--dark-grey);
 }
 
 .input {
@@ -41,7 +44,6 @@ body {
 
 .input:focus {
   border: 0.075rem solid var(--light-green);
-
 }
 
 .input.invalid {
@@ -81,7 +83,7 @@ body {
 .button.outline {
   border: 0.075rem solid var(--main-green);
   background: transparent;
-  color: var(--main-green)
+  color: var(--main-green);
 }
 
 .button.outline:hover {
@@ -89,7 +91,7 @@ body {
 }
 
 select[multiple] {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 option {
@@ -106,11 +108,11 @@ option {
 }
 
 .chip.category {
-  background:  #4B0082;
+  background: #4b0082;
 }
 
 .chip.platform {
-  background: #FFA500;
+  background: #ffa500;
 }
 
 .profile-photo {

@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JwtService {
   decode(accessToken: string) {
-      if (accessToken) return jwtDecode<PayloadType>(accessToken)
+    if (accessToken) return jwtDecode<PayloadType>(accessToken);
 
-      return null;
+    return null;
   }
 }
 
 export type PayloadType = {
-  username: string
-  imgUrl: string
-}
+  username: string;
+  imgUrl: string;
+};

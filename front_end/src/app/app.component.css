@@ -3,7 +3,6 @@ main {
   margin: auto;
 }
 
-
 .alert {
   position: fixed;
   display: flex;
@@ -26,11 +25,11 @@ main {
 }
 
 .alert.open {
-  animation: openAlert .3s ease-in-out forwards;
+  animation: openAlert 0.3s ease-in-out forwards;
 }
 
 .alert.close {
-  animation: closeAlert .3s ease-in-out;
+  animation: closeAlert 0.3s ease-in-out;
 }
 
 nav {
@@ -80,7 +79,6 @@ nav {
   position: relative;
 }
 
-
 .profile-menu {
   z-index: 9999;
   position: absolute;
@@ -97,16 +95,16 @@ nav {
 
 .profile-menu h3 {
   text-align: center;
-  color: var(--main-green)
+  color: var(--main-green);
 }
 
 .profile-menu.open {
-  animation: openMenu .3s ease-in-out;
+  animation: openMenu 0.3s ease-in-out;
   animation-fill-mode: forwards;
 }
 
 .profile-menu.close {
-  animation: closeMenu .3s ease-in-out;
+  animation: closeMenu 0.3s ease-in-out;
   animation-fill-mode: forwards;
 }
 
@@ -162,7 +160,7 @@ main {
   }
 }
 
-@media screen and (min-width: 980px)  {
+@media screen and (min-width: 980px) {
   .profile-menu {
     width: 525px;
     right: 0;

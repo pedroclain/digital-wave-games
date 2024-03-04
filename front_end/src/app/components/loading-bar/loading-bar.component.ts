@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './loading-bar.component.html',
-  styleUrl: './loading-bar.component.css'
+  styleUrl: './loading-bar.component.css',
 })
 export class LoadingBarComponent {
   @Input() open = false;

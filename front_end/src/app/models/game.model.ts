@@ -10,5 +10,5 @@ export interface Game {
   price: number;
   platforms: Platform[];
   categories: Category[];
-  comments: Comment[]
+  comments: Comment[];
 }

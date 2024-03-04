@@ -24,14 +24,17 @@ export const apiInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(newReq).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (!newReq.url.includes("/auth") && error.status === HttpStatusCode.Unauthorized) {
+      if (
+        !newReq.url.includes('/auth') &&
+        error.status === HttpStatusCode.Unauthorized
+      ) {
         authService.logout();
-        router.navigate(['/login'], { queryParams: {expire: true}})
+        router.navigate(['/login'], { queryParams: { expire: true } });
 
         return of();
       }
 
-      return throwError(() => error)
-    })
+      return throwError(() => error);
+    }),
   );
 };

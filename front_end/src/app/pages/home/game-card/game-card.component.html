@@ -5,12 +5,12 @@
     <div class="chips-container">
       <div class="chip-line">
         @for (category of game?.categories; track $index) {
-        <span class="chip chip-category">{{ category.name }}</span>
+          <span class="chip chip-category">{{ category.name }}</span>
         }
       </div>
       <div class="chip-line platform">
         @for (platform of game?.platforms; track $index) {
-        <span class="chip chip-platform">{{ platform.name }}</span>
+          <span class="chip chip-platform">{{ platform.name }}</span>
         }
       </div>
     </div>

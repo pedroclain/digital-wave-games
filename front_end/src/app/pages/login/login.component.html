@@ -1,5 +1,15 @@
-  <form [formGroup]="formLogin" >
-      <input formControlName="email" type="email" class="input" placeholder="Email" />
-      <input formControlName="password" type="password" class="input" placeholder="Password" />
-      <button type="submit" class="button" (click)="login()">Log In</button>
-  </form>
+<form [formGroup]="formLogin">
+  <input
+    formControlName="email"
+    type="email"
+    class="input"
+    placeholder="Email"
+  />
+  <input
+    formControlName="password"
+    type="password"
+    class="input"
+    placeholder="Password"
+  />
+  <button type="submit" class="button" (click)="login()">Log In</button>
+</form>

@@ -1,3 +1,3 @@
 export interface Platform {
-  name: string
+  name: string;
 }

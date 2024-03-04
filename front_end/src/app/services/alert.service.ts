@@ -11,11 +11,11 @@ export class AlertService {
   constructor() {}
 
   alertError(content: string) {
-    this.openAlert({ content, type: 'error'})
+    this.openAlert({ content, type: 'error' });
   }
 
   alertSuccess(content: string) {
-    this.openAlert({ content, type: 'success'})
+    this.openAlert({ content, type: 'success' });
   }
 
   openAlert({ content, type }: { content: string; type: AlertType }) {

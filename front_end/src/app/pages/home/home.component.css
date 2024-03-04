@@ -9,7 +9,6 @@ section {
   gap: 1.25rem;
 }
 
-
 .search-container {
   display: flex;
 }
@@ -106,7 +105,7 @@ section {
 }
 
 .page-button.disabled {
-  color: var(--light-grey)
+  color: var(--light-grey);
 }
 
 .page-button.active {
@@ -134,7 +133,7 @@ section {
   }
 }
 
-@media screen and (min-width: 980px)  {
+@media screen and (min-width: 980px) {
   .content {
     gap: 1.75rem;
   }
@@ -171,7 +170,7 @@ section {
   }
 }
 
-@media screen and (min-width: 1200px)  {
+@media screen and (min-width: 1200px) {
   .game-list {
     grid-template-columns: 1fr 1fr;
   }

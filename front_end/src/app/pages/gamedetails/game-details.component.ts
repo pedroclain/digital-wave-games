@@ -1,9 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { Game } from '../../models/game.model';
 import { GameService } from '../../services/game.service';
 import { AlertService } from '../../services/alert.service';
@@ -23,9 +19,22 @@ export class GameDetails {
   purchaseForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.maxLength(32)]],
     email: ['', [Validators.required, Validators.email]],
-    phone: [null, [CustomValidators.numberMinLength(8), CustomValidators.numberMaxLength(12)]],
+    phone: [
+      null,
+      [
+        CustomValidators.numberMinLength(8),
+        CustomValidators.numberMaxLength(12),
+      ],
+    ],
     cardForm: this.formBuilder.group({
-      number: [null, [Validators.required, CustomValidators.numberMinLength(12), CustomValidators.numberMaxLength(16)]],
+      number: [
+        null,
+        [
+          Validators.required,
+          CustomValidators.numberMinLength(12),
+          CustomValidators.numberMaxLength(16),
+        ],
+      ],
       cvv: [null, [Validators.required, CustomValidators.numberLength(3)]],
       validation: [null, [Validators.required]],
     }),
@@ -34,7 +43,7 @@ export class GameDetails {
   constructor(
     private gameService: GameService,
     private alertService: AlertService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {}
 
   @Input()
@@ -44,15 +53,15 @@ export class GameDetails {
         this.game = response;
       },
       error: (error) => {
-        this.alertService.alertError("Something is wrong")
-      }
+        this.alertService.alertError('Something is wrong');
+      },
     });
   }
 
   submitContactForm() {
     this.alertService.openAlert({
-      content: "This title will be purchase soon...",
-      type: "success"
-    })
+      content: 'This title will be purchase soon...',
+      type: 'success',
+    });
   }
 }

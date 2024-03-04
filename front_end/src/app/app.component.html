@@ -4,23 +4,24 @@
 </div>
 
 <nav>
-
   <a class="logo-link" routerLink="/">
     <img src="assets/icons/logo.svg" />
     <span>DWG</span>
   </a>
 
   @if (authService.isLoggedIn()) {
-      <div class="profile-photo" (click)="switchProfileMenu()">
-        <img [src]="authService.getPayload()?.imgUrl" />
-      </div>
+    <div class="profile-photo" (click)="switchProfileMenu()">
+      <img [src]="authService.getPayload()?.imgUrl" />
+    </div>
   } @else {
-    <button routerLink="/login" class="button outline login-button">Log In</button>
+    <button routerLink="/login" class="button outline login-button">
+      Log In
+    </button>
   }
 </nav>
 
 <div [ngClass]="profileMenuOpen" class="profile-menu">
-  <h3>Hi, {{authService.getPayload()?.username}}</h3>
+  <h3>Hi, {{ authService.getPayload()?.username }}</h3>
   <button class="button" (click)="logout()">Log out</button>
 </div>
 

@@ -42,7 +42,7 @@
             [size]="categories.length"
           >
             @for (category of categories; track $index) {
-            <option [value]="category.name">{{ category.name }}</option>
+              <option [value]="category.name">{{ category.name }}</option>
             }
           </select>
         </div>
@@ -55,15 +55,16 @@
             [size]="platforms.length"
           >
             @for (platform of platforms; track $index) {
-            <option [value]="platform.name">{{ platform.name }}</option>
+              <option [value]="platform.name">{{ platform.name }}</option>
             }
           </select>
         </div>
       </div>
     </form>
-    <button class="button filter-button" (click)="filterClickHandler()">Apply</button>
+    <button class="button filter-button" (click)="filterClickHandler()">
+      Apply
+    </button>
   </div>
-
 
   <section>
     <form class="search-container" [formGroup]="filterForm">
@@ -74,64 +75,70 @@
         class="input input-search"
         placeholder="Find your favorite title..."
       />
-      <button type="text" class="button search-button" (click)="searchClickHandler()">
+      <button
+        type="text"
+        class="button search-button"
+        (click)="searchClickHandler()"
+      >
         Search
       </button>
     </form>
     <app-loading-bar [open]="games === null"></app-loading-bar>
-    @if (games!==null && games.length > 0) {
-    <div class="pagination-button-container">
-      <span
-        class="page-button"
-        [class.disabled]="!canPrev()"
-        (click)="prevPage()"
-        >prev</span
-      >
-      @for (page of pageButtons; track $index) {
-      <span
-        class="page-button"
-        [class.active]="page === currentPage"
-        (click)="updateCurrentPage(page)"
-        >{{ page + 1 }}</span
-      >
-      }
-
-      <span
-        class="page-button"
-        [class.disabled]="!canNext()"
-        (click)="nextPage()"
-        >next</span
-      >
-    </div>
-    <div class="game-list">
-      @for (game of games; track $index) {
-        <app-game-card [game]="game" />
+    @if (games !== null && games.length > 0) {
+      <div class="pagination-button-container">
+        <span
+          class="page-button"
+          [class.disabled]="!canPrev()"
+          (click)="prevPage()"
+          >prev</span
+        >
+        @for (page of pageButtons; track $index) {
+          <span
+            class="page-button"
+            [class.active]="page === currentPage"
+            (click)="updateCurrentPage(page)"
+            >{{ page + 1 }}</span
+          >
         }
-    </div>
 
-    <div class="pagination-button-container">
-      <span
-        class="page-button"
-        [class.disabled]="!canPrev()"
-        (click)="prevPage()"
-        >prev</span
-      >
-      @for (page of pageButtons; track $index) {
-      <span
-        class="page-button"
-        [class.active]="page === currentPage"
-        (click)="updateCurrentPage(page)"
-        >{{ page + 1 }}</span
-      >
-      }
+        <span
+          class="page-button"
+          [class.disabled]="!canNext()"
+          (click)="nextPage()"
+          >next</span
+        >
+      </div>
+      <div class="game-list">
+        @for (game of games; track $index) {
+          <app-game-card [game]="game" />
+        }
+      </div>
 
-      <span
-        class="page-button"
-        [class.disabled]="!canNext()"
-        (click)="nextPage()"
-        >next</span
-      >
-    </div>
-    } @else if (games !== null && games.length <= 0) { No games found. }
+      <div class="pagination-button-container">
+        <span
+          class="page-button"
+          [class.disabled]="!canPrev()"
+          (click)="prevPage()"
+          >prev</span
+        >
+        @for (page of pageButtons; track $index) {
+          <span
+            class="page-button"
+            [class.active]="page === currentPage"
+            (click)="updateCurrentPage(page)"
+            >{{ page + 1 }}</span
+          >
+        }
+
+        <span
+          class="page-button"
+          [class.disabled]="!canNext()"
+          (click)="nextPage()"
+          >next</span
+        >
+      </div>
+    } @else if (games !== null && games.length <= 0) {
+      No games found.
+    }
   </section>
 </div>

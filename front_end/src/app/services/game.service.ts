@@ -12,14 +12,16 @@ export class GameService {
   constructor(private http: HttpClient) {}
 
   findById(id: number) {
-    return this.http.get<Game>('store/game/'+id).pipe(delay(1000));
+    return this.http.get<Game>('store/game/' + id).pipe(delay(1000));
   }
 
   findPaginate(paginate: PaginateType) {
-    return this.http.post<{
-      games: Game[],
-      lastPage: number
-    }>('store/game/pagination', paginate).pipe(delay(1000));
+    return this.http
+      .post<{
+        games: Game[];
+        lastPage: number;
+      }>('store/game/pagination', paginate)
+      .pipe(delay(1000));
   }
 
   findCategories() {
@@ -34,14 +36,14 @@ export class GameService {
 export type PaginateType = {
   page: number;
   size: number;
-  orderBy?: string,
+  orderBy?: string;
   filter?: {
     name?: string;
     categories?: string[];
     platforms?: string[];
     price?: {
       from?: number;
-      to?: number
-    }
+      to?: number;
+    };
   };
 };

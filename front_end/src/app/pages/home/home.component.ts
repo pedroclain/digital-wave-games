@@ -17,7 +17,13 @@ import { LoadingBarComponent } from '../../components/loading-bar/loading-bar.co
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, GameCardComponent, LoadingBarComponent, CommonModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    GameCardComponent,
+    LoadingBarComponent,
+    CommonModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -43,7 +49,7 @@ export class HomeComponent implements OnInit {
   });
   filters: PaginateType = {
     page: this.currentPage,
-    size: 2
+    size: 2,
   };
 
   constructor(
@@ -64,14 +70,12 @@ export class HomeComponent implements OnInit {
 
   findPaginate() {
     this.games = null;
-    this.gameService
-    .findPaginate(this.filters)
-    .subscribe((response) => {
+    this.gameService.findPaginate(this.filters).subscribe((response) => {
       this.games = response.games;
       this.lastPage = response.lastPage;
-      this.numberOfButtonPages = this.lastPage > 3 ? 3 : this.lastPage + 1
+      this.numberOfButtonPages = this.lastPage > 3 ? 3 : this.lastPage + 1;
       this.definePageButton();
-      });
+    });
   }
 
   filterClickHandler() {
@@ -101,7 +105,9 @@ export class HomeComponent implements OnInit {
       page: 0,
       size: 2,
       filter: {
-        name: this.filterForm.controls.name.valid ? this.filterForm.value.name! : undefined,
+        name: this.filterForm.controls.name.valid
+          ? this.filterForm.value.name!
+          : undefined,
         categories: this.filterForm.controls.categories.valid
           ? this.filterForm.value.categories!
           : undefined,
@@ -154,10 +160,12 @@ export class HomeComponent implements OnInit {
     const n = this.currentPage;
     const k = this.numberOfButtonPages;
     const y = this.lastPage;
-    const s = Math.ceil(k/2);
-    const h = (y-n<s) ? s-(y-n) : 0;
+    const s = Math.ceil(k / 2);
+    const h = y - n < s ? s - (y - n) : 0;
 
-    for(let i=s+h-1;i>=0;i--) if (n-i >=0) this.pageButtons.push(n-i);
-    for(let i=1; (this.pageButtons.length<k); i++) this.pageButtons.push(n+i);
+    for (let i = s + h - 1; i >= 0; i--)
+      if (n - i >= 0) this.pageButtons.push(n - i);
+    for (let i = 1; this.pageButtons.length < k; i++)
+      this.pageButtons.push(n + i);
   }
 }

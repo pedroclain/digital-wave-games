@@ -1,77 +1,130 @@
 <div class="content">
-<app-loading-bar [open]="game === null"></app-loading-bar>
-@if (game) {
-<div class="game-container">
-  <img class="banner" [src]="game.imgUrl" />
-  <h1 class="title">{{ game.name }}</h1>
-  <p class="description">
-    {{ game.description }}
-  </p>
-  <div class="price-container">
-    <img src="assets/icons/dollar.svg" />
-    <p class="price-txt">{{ game.price }}</p>
-  </div>
-  <div class="chip-container">
-    <div class="chip-line">
-      @for (category of game.categories; track $index) {
-      <span class="chip category">{{ category.name }}</span>
-      }
-    </div>
-    <div class="chip-line">
-      @for (platform of game.platforms; track $index) {
-      <span class="chip platform">{{ platform.name }}</span>
-      }
-    </div>
-  </div>
-</div>
-<form (submit)="submitContactForm()" [formGroup]="purchaseForm">
-  <div class="input-container">
-    <input maxlength="32" class="input" formControlName="name" type="text" placeholder="First Name"
-      [class.invalid]="purchaseForm.controls.name.touched && !purchaseForm.controls.name.valid" />
-  </div>
-  <div class="input-container">
-    <input maxlength="32" class="input" formControlName="email" type="email" placeholder="Email"
-      [class.invalid]="purchaseForm.controls.email.touched && !purchaseForm.controls.email.valid" />
-  </div>
-  <div class="input-container">
-    <input class="input" formControlName="phone" type="number" placeholder="Phone"
-      [class.invalid]="purchaseForm.controls.phone.touched && !purchaseForm.controls.phone.valid"/>
-  </div>
-  <form [formGroup]="purchaseForm.controls.cardForm" class="subform-container">
-    <div class="input-container">
-      <input class="input" formControlName="number" type="number" placeholder="Card number"
-        [class.invalid]="purchaseForm.controls.cardForm.controls.number.touched && !purchaseForm.controls.cardForm.controls.number.valid"/>
-    </div>
-    <div class="input-container">
-      <input class="input" formControlName="cvv" type="number" placeholder="CVV"
-        [class.invalid]="purchaseForm.controls.cardForm.controls.cvv.touched && !purchaseForm.controls.cardForm.controls.cvv.valid"/>
-    </div>
-    <div class="input-container">
-      <input class="input" formControlName="validation" type="date" placeholder="Validation"
-        [class.invalid]="purchaseForm.controls.cardForm.controls.validation.touched && !purchaseForm.controls.cardForm.controls.validation.valid"/>
-    </div>
-  </form>
-  <div class="submit-container">
-    <button [disabled]="purchaseForm.invalid" class="button" type="submit">
-      Finish
-    </button>
-  </div>
-</form>
-<section class="rating-section">
-  <h2>Rating</h2>
-  <div class="cards">
-    @for (comment of game.comments; track $index) {
-    <div class="rating-card">
-      <div class="profile">
-        <img [src]="comment.user.imgUrl" class="profile-photo" />
-        <div class="card-name">{{ comment.user.username }}</div>
+  <app-loading-bar [open]="game === null"></app-loading-bar>
+  @if (game) {
+    <div class="game-container">
+      <img class="banner" [src]="game.imgUrl" />
+      <h1 class="title">{{ game.name }}</h1>
+      <p class="description">
+        {{ game.description }}
+      </p>
+      <div class="price-container">
+        <img src="assets/icons/dollar.svg" />
+        <p class="price-txt">{{ game.price }}</p>
       </div>
-      <div class="content">
-        {{ comment.content }}
+      <div class="chip-container">
+        <div class="chip-line">
+          @for (category of game.categories; track $index) {
+            <span class="chip category">{{ category.name }}</span>
+          }
+        </div>
+        <div class="chip-line">
+          @for (platform of game.platforms; track $index) {
+            <span class="chip platform">{{ platform.name }}</span>
+          }
+        </div>
       </div>
     </div>
-    }
-  </div>
-</section>
-}
+    <form (submit)="submitContactForm()" [formGroup]="purchaseForm">
+      <div class="input-container">
+        <input
+          maxlength="32"
+          class="input"
+          formControlName="name"
+          type="text"
+          placeholder="First Name"
+          [class.invalid]="
+            purchaseForm.controls.name.touched &&
+            !purchaseForm.controls.name.valid
+          "
+        />
+      </div>
+      <div class="input-container">
+        <input
+          maxlength="32"
+          class="input"
+          formControlName="email"
+          type="email"
+          placeholder="Email"
+          [class.invalid]="
+            purchaseForm.controls.email.touched &&
+            !purchaseForm.controls.email.valid
+          "
+        />
+      </div>
+      <div class="input-container">
+        <input
+          class="input"
+          formControlName="phone"
+          type="number"
+          placeholder="Phone"
+          [class.invalid]="
+            purchaseForm.controls.phone.touched &&
+            !purchaseForm.controls.phone.valid
+          "
+        />
+      </div>
+      <form
+        [formGroup]="purchaseForm.controls.cardForm"
+        class="subform-container"
+      >
+        <div class="input-container">
+          <input
+            class="input"
+            formControlName="number"
+            type="number"
+            placeholder="Card number"
+            [class.invalid]="
+              purchaseForm.controls.cardForm.controls.number.touched &&
+              !purchaseForm.controls.cardForm.controls.number.valid
+            "
+          />
+        </div>
+        <div class="input-container">
+          <input
+            class="input"
+            formControlName="cvv"
+            type="number"
+            placeholder="CVV"
+            [class.invalid]="
+              purchaseForm.controls.cardForm.controls.cvv.touched &&
+              !purchaseForm.controls.cardForm.controls.cvv.valid
+            "
+          />
+        </div>
+        <div class="input-container">
+          <input
+            class="input"
+            formControlName="validation"
+            type="date"
+            placeholder="Validation"
+            [class.invalid]="
+              purchaseForm.controls.cardForm.controls.validation.touched &&
+              !purchaseForm.controls.cardForm.controls.validation.valid
+            "
+          />
+        </div>
+      </form>
+      <div class="submit-container">
+        <button [disabled]="purchaseForm.invalid" class="button" type="submit">
+          Finish
+        </button>
+      </div>
+    </form>
+    <section class="rating-section">
+      <h2>Rating</h2>
+      <div class="cards">
+        @for (comment of game.comments; track $index) {
+          <div class="rating-card">
+            <div class="profile">
+              <img [src]="comment.user.imgUrl" class="profile-photo" />
+              <div class="card-name">{{ comment.user.username }}</div>
+            </div>
+            <div class="content">
+              {{ comment.content }}
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  }
 </div>

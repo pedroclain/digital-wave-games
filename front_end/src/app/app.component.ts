@@ -15,12 +15,14 @@ import { AlertService } from './services/alert.service';
 export class AppComponent {
   router = inject(Router);
   authService = inject(AuthService);
-  alertService = inject(AlertService)
+  alertService = inject(AlertService);
 
   profileMenuOpen: null | string = null;
 
   switchProfileMenu() {
-    this.profileMenuOpen === 'open' ? this.profileMenuOpen = 'close' : this.profileMenuOpen = 'open';
+    this.profileMenuOpen === 'open'
+      ? (this.profileMenuOpen = 'close')
+      : (this.profileMenuOpen = 'open');
   }
 
   logout() {

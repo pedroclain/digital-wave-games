@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private alertService: AlertService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   formLogin = new FormGroup({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       if (params['expire'])
-        this.alertService.alertError("Session expired, please signin again");
+        this.alertService.alertError('Session expired, please signin again');
     });
   }
 
@@ -51,9 +51,9 @@ export class LoginComponent implements OnInit {
 
   loginErrorHandler(err: HttpErrorResponse) {
     if (err.status === HttpStatusCode.Unauthorized) {
-      this.alertService.alertError("Invalid email or password. Try again...");
+      this.alertService.alertError('Invalid email or password. Try again...');
     } else {
-      this.alertService.alertError("Unespected error");
+      this.alertService.alertError('Unespected error');
     }
   }
 }
