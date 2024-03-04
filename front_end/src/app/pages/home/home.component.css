@@ -66,6 +66,26 @@ section {
   animation: closeMenu 0.3s ease-in-out;
 }
 
+.filter-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.clear-filter-button {
+  background-color: var(--light-grey);
+  border-color: var(--light-grey);
+}
+
+.clear-filter-button:hover {
+  background-color: var(--dark-grey);
+}
+
+.filter-actions .button {
+  width: 100%;
+}
+
 .inputs-price-container {
   display: flex;
   gap: 1rem;
@@ -153,10 +173,6 @@ section {
     width: 30%;
   }
 
-  .filter-button {
-    width: 100%;
-  }
-
   .filter-menu.open {
     animation: none;
   }
@@ -173,5 +189,9 @@ section {
 @media screen and (min-width: 1200px) {
   .game-list {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .filter-actions {
+    flex-direction: row;
   }
 }

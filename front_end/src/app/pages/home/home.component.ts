@@ -44,8 +44,8 @@ export class HomeComponent implements OnInit {
     orderBy: ['', Validators.required],
     priceFrom: [null, Validators.required],
     priceTo: [null, Validators.required],
-    categories: [[], CustomValidators.arrayMinLength(1)],
-    platforms: [[], CustomValidators.arrayMinLength(1)],
+    categories: [null, CustomValidators.arrayMinLength(1)],
+    platforms: [null, CustomValidators.arrayMinLength(1)],
   });
   filters: PaginateType = {
     page: this.currentPage,
@@ -80,6 +80,19 @@ export class HomeComponent implements OnInit {
 
   filterClickHandler() {
     this.filterForm.controls.name.patchValue('');
+    this.applyFilters();
+    this.switchFiltersMenu();
+  }
+
+  clearClickHandler() {
+    this.filterForm.patchValue({
+      name: '',
+      orderBy: '',
+      priceFrom: null,
+      priceTo: null,
+      categories: null,
+      platforms: null,
+    });
     this.applyFilters();
     this.switchFiltersMenu();
   }

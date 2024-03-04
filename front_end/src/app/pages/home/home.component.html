@@ -61,9 +61,14 @@
         </div>
       </div>
     </form>
-    <button class="button filter-button" (click)="filterClickHandler()">
-      Apply
-    </button>
+    <div class="filter-actions">
+      <button class="button clear-filter-button" (click)="clearClickHandler()">
+        Clear
+      </button>
+      <button class="button apply-filter-button" (click)="filterClickHandler()">
+        Apply
+      </button>
+    </div>
   </div>
 
   <section>
