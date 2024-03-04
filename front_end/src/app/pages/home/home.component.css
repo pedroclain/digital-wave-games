@@ -85,6 +85,12 @@ section {
   gap: 1rem;
 }
 
+.game-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
 .pagination-button-container {
   display: flex;
   justify-content: center;
@@ -125,5 +131,48 @@ section {
 
   to {
     transform: translateX(-100%);
+  }
+}
+
+@media screen and (min-width: 980px)  {
+  .content {
+    gap: 1.75rem;
+  }
+
+  .filter-button-container {
+    display: none;
+  }
+
+  .content {
+    display: flex;
+  }
+
+  .filter-menu {
+    position: relative;
+    display: block;
+    transform: none;
+    width: 30%;
+  }
+
+  .filter-button {
+    width: 100%;
+  }
+
+  .filter-menu.open {
+    animation: none;
+  }
+
+  .filter-menu.close {
+    animation: none;
+  }
+
+  section {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1200px)  {
+  .game-list {
+    grid-template-columns: 1fr 1fr;
   }
 }

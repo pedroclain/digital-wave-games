@@ -61,9 +61,11 @@
         </div>
       </div>
     </form>
-    <button class="button" (click)="filterClickHandler()">Apply</button>
+    <button class="button filter-button" (click)="filterClickHandler()">Apply</button>
   </div>
 
+
+  <section>
     <form class="search-container" [formGroup]="filterForm">
       <input
         formControlName="name"
@@ -76,8 +78,6 @@
         Search
       </button>
     </form>
-
-  <section>
     <app-loading-bar [open]="games === null"></app-loading-bar>
     @if (games!==null && games.length > 0) {
     <div class="pagination-button-container">
@@ -103,9 +103,11 @@
         >next</span
       >
     </div>
-    @for (game of games; track $index) {
-    <app-game-card [game]="game" />
-    }
+    <div class="game-list">
+      @for (game of games; track $index) {
+        <app-game-card [game]="game" />
+        }
+    </div>
 
     <div class="pagination-button-container">
       <span

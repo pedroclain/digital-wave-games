@@ -1,3 +1,9 @@
+main {
+  max-width: 1400px;
+  margin: auto;
+}
+
+
 .alert {
   position: fixed;
   display: flex;
@@ -86,6 +92,7 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--dark-grey);
+  border-radius: 0.75rem;
 }
 
 .profile-menu h3 {
@@ -152,5 +159,12 @@ main {
 
   to {
     top: -100%;
+  }
+}
+
+@media screen and (min-width: 980px)  {
+  .profile-menu {
+    width: 525px;
+    right: 0;
   }
 }
